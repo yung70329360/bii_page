@@ -20,9 +20,9 @@ type ArticleFields = {
     featured?: boolean;
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const res = await client.getEntries({ content_type: 'article' });
-  return res.items.map((item) => ({
+  return res.items.map((item: any) => ({
     slug: (item.fields as ArticleFields).slug,
   }));
 }
@@ -43,12 +43,12 @@ const renderOptions: Options = {
         const { url, fileName } = node.data.target.fields.file;
         return <Image src={`https:${url}`} alt={fileName} width={1200} height={675} className="my-10 rounded-lg" />;
       },
-      [BLOCKS.PARAGRAPH]: (node, children) => <p className="leading-relaxed mb-6">{children}</p>,
+      [BLOCKS.PARAGRAPH]: (node: any, children: any) => <p className="leading-relaxed mb-6">{children}</p>,
     },
 };
 
 
-export default async function ArticlePage({ params }: { params: { slug: string } }) {
+export default async function ArticlePage({ params }: { params: any }) {
   const article = await getArticle(params.slug);
 
   if (!article) {

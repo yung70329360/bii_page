@@ -59,7 +59,7 @@ export default function WisdomStrategyPage() {
               {/* Right Column: Book Image */}
               <div className="flex justify-center">
                 <Image
-                  src="/book/智慧策略_預覽仰.png"
+                  src="/book/book_type1.png"
                   alt="《智慧策略》書籍封面"
                   width={450}
                   height={675}
