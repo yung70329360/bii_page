@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
 
@@ -64,7 +64,7 @@ const AiSpinTrainingPage = () => {
             </nav>
 
             {/* Header Section */}
-            <header className="relative bg-slate-900 overflow-hidden">
+            <header className="relative bg-slate-900">
                 <canvas id="particle-canvas" className="absolute inset-0 w-full h-full z-0"></canvas>
                 <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
                     <div className="max-w-2xl z-10">
@@ -75,7 +75,7 @@ const AiSpinTrainingPage = () => {
                             本課程專為頂尖銷售團隊設計，將全球公認最有效的顧問式銷售法，與當代最強大的 AI 工具深度整合，打造一套可複製、可量化的高效銷售作業系統。
                         </p>
                         <div className="mt-10 flex items-center gap-x-6">
-                            <a href="https://bii.tw/contact" className="rounded-md bg-cyan-600 px-6 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600 transition-all duration-300 transform hover:scale-105">預約企業內訓</a>
+                            <Link href="/contact" className="rounded-md bg-cyan-600 px-6 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600 transition-all duration-300 transform hover:scale-105">預約企業內訓</Link>
                             <a href="#framework" className="text-base font-semibold leading-6 text-white">探索核心架構 <span aria-hidden="true">→</span></a>
                         </div>
                     </div>
@@ -525,11 +525,11 @@ const AiSpinTrainingPage = () => {
                                 <p className="mt-6 max-w-2xl mx-auto text-lg text-slate-300">我們相信業務最強的能力，不是背產品規格，而是能聽出問題、放大後果、說出價值、提出解法。AI 是讓這一切「更有效、更快速、更具說服力」的助力。</p>
                                 <p className="mt-4 max-w-2xl mx-auto text-lg text-slate-300">若你正在尋找一門能馬上落地、直接提升業績能力的課程，這將是極具回報的選擇。</p>
                                 <div className="mt-10">
-                                    <a href="https://bii.tw/contact" className="inline-block bg-white text-cyan-700 font-bold text-lg px-10 py-5 rounded-lg shadow-2xl hover:bg-slate-200 transition-all duration-300 transform hover:scale-105">
+                                    <Link href="/contact" className="inline-block bg-white text-cyan-700 font-bold text-lg px-10 py-5 rounded-lg shadow-2xl hover:bg-slate-200 transition-all duration-300 transform hover:scale-105">
                                         企業內訓合作詢問
-                                    </a>
+                                    </Link>
                                 </div>
-                                <p className="mt-6 text-sm text-slate-400">提供課程大綱、客製化內訓課程。<br />請來信：bii.globalservice@gmail.com 或<a href="https://bii.tw/contact" className="underline hover:text-white">聯絡我們表單</a></p>
+                                <p className="mt-6 text-sm text-slate-400">提供課程大綱、客製化內訓課程。<br />請來信：bii.globalservice@gmail.com 或<Link href="/contact" className="underline hover:text-white">聯絡我們表單</Link></p>
                             </div>
                         </div>
                     </div>
