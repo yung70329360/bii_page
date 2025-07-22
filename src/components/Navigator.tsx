@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 const mainNavLinks = [
-  { href: '/', label: '首頁' },
+  { href: 'https://bii.tw', label: '首頁', isExternal: true },
   { href: '/ai-spin-training', label: 'AI SPIN培訓' },
   { href: '/knowledge-base', label: '知識庫' },
   {
@@ -43,40 +43,56 @@ export default function Navigator() {
         <div className="flex items-center justify-between h-16">
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition">
+              <a href="https://bii.tw" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition">
                 <Image src="/Logo/logo.png" alt="BiiPage Logo" width={120} height={40} />
-              </Link>
+              </a>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-1">
-                {mainNavLinks.map((link) =>
-                  link.subLinks ? (
-                    <div key={link.label} className="relative group">
-                      <button
-                        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 flex items-center gap-1 ${
-                          pathname.startsWith('/ebooks')
-                            ? 'text-blue-600 font-semibold'
-                            : 'text-gray-900 hover:text-blue-600'
-                        }`}
+                {mainNavLinks.map((link) => {
+                  if (link.isExternal) {
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors duration-300"
                       >
                         {link.label}
-                        <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
-                      </button>
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                        <div className="py-1">
-                          {link.subLinks.map((subLink) => (
-                            <Link
-                              key={subLink.href}
-                              href={subLink.href}
-                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            >
-                              {subLink.label}
-                            </Link>
-                          ))}
+                      </a>
+                    );
+                  }
+                  if (link.subLinks) {
+                    return (
+                      <div key={link.label} className="relative group">
+                        <button
+                          className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 flex items-center gap-1 ${
+                            pathname.startsWith('/ebooks')
+                              ? 'text-blue-600 font-semibold'
+                              : 'text-gray-900 hover:text-blue-600'
+                          }`}
+                        >
+                          {link.label}
+                          <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                        </button>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                          <div className="py-1">
+                            {link.subLinks.map((subLink) => (
+                              <Link
+                                key={subLink.href}
+                                href={subLink.href}
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                              >
+                                {subLink.label}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ) : (
+                    );
+                  }
+                  return (
                     <Link
                       key={link.href}
                       href={link.href}
@@ -88,8 +104,8 @@ export default function Navigator() {
                     >
                       {link.label}
                     </Link>
-                  )
-                )}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -125,36 +141,53 @@ export default function Navigator() {
       {isOpen && (
         <div className="sm:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            {mainNavLinks.map((link) =>
-              link.subLinks ? (
-                <div key={link.label}>
-                  <button
-                    onClick={() => setIsEbookMenuOpen(!isEbookMenuOpen)}
-                    className="w-full flex justify-between items-center text-gray-700 hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-base font-medium transition"
+            {mainNavLinks.map((link) => {
+              if (link.isExternal) {
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-600 hover:text-white transition"
+                    onClick={() => setIsOpen(false)}
                   >
-                    <span>{link.label}</span>
-                    <ChevronDown
-                      className={`h-5 w-5 transition-transform ${
-                        isEbookMenuOpen ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-                  {isEbookMenuOpen && (
-                    <div className="mt-1 pl-4">
-                      {link.subLinks.map((subLink) => (
-                        <Link
-                          key={subLink.href}
-                          href={subLink.href}
-                          className="text-gray-700 hover:bg-blue-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {subLink.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
+                    {link.label}
+                  </a>
+                );
+              }
+              if (link.subLinks) {
+                return (
+                  <div key={link.label}>
+                    <button
+                      onClick={() => setIsEbookMenuOpen(!isEbookMenuOpen)}
+                      className="w-full flex justify-between items-center text-gray-700 hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-base font-medium transition"
+                    >
+                      <span>{link.label}</span>
+                      <ChevronDown
+                        className={`h-5 w-5 transition-transform ${
+                          isEbookMenuOpen ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    {isEbookMenuOpen && (
+                      <div className="mt-1 pl-4">
+                        {link.subLinks.map((subLink) => (
+                          <Link
+                            key={subLink.href}
+                            href={subLink.href}
+                            className="text-gray-700 hover:bg-blue-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {subLink.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              return (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -167,8 +200,8 @@ export default function Navigator() {
                 >
                   {link.label}
                 </Link>
-              )
-            )}
+              );
+            })}
             <Link
               href={contactLink.href}
               className="text-gray-700 hover:bg-blue-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition"
