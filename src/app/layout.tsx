@@ -23,6 +23,16 @@ export const metadata: Metadata = {
     title: "突圍智創 BII",
     description: "聚智而行，創領未來 — 創業、企業、二代、職涯全方位支持。",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico?v=3" },
+      { url: "/icon.png?v=3", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png?v=3" }],
+    other: [
+      { rel: "mask-icon", url: "/safari-pinned-tab.svg" },
+    ],
+  },
 };
 
 export default function RootLayout({
