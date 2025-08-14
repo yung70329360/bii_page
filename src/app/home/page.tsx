@@ -199,7 +199,7 @@ const Home = () => {
       )}
       {/* Mouse-following plane */}
       <div ref={planeRef} className="fixed pointer-events-none z-50 transition-transform duration-75 ease-out w-8 h-8">
-        <img src="/image/mouse/plane.png" alt="plane" className="w-full h-full opacity-80 object-contain" />
+        <img src="/Image/mouse/plane.png" alt="plane" className="w-full h-full opacity-80 object-contain" />
       </div>
       <Navigator />
       <main className="bg-gray-50 text-gray-900">
@@ -265,7 +265,7 @@ const Home = () => {
               <div className="relative h-[400px] lg:h-auto p-6 md:p-8 lg:p-10">
                 <div className="geo-shape">
                   <img
-                    src="/image/about_us/v1.png"
+                    src="/Image/about_us/v1.png"
                     alt="Team collaboration - hands stacked together"
                     className="w-full h-full object-cover"
                   />
@@ -301,7 +301,7 @@ const Home = () => {
                 <div className="content-section waterfall-item">
                   <div className="section-header">
                     <div className="service-icon">
-                      <img src="/image/service_card/icon/startup.png" alt="創業突圍" className="icon-image" />
+                      <img src="/Image/service_card/icon/startup.png" alt="創業突圍" className="icon-image" />
                     </div>
                     <h3 className="section-title">創業突圍</h3>
                     <div className="title-separator"></div>
@@ -322,7 +322,7 @@ const Home = () => {
                 <div className="content-section waterfall-item">
                   <div className="section-header">
                     <div className="service-icon">
-                      <img src="/image/service_card/icon/enterprise.png" alt="企業突圍" className="icon-image" />
+                      <img src="/Image/service_card/icon/enterprise.png" alt="企業突圍" className="icon-image" />
                     </div>
                     <h3 className="section-title">企業突圍</h3>
                     <div className="title-separator"></div>
@@ -343,7 +343,7 @@ const Home = () => {
                 <div className="content-section waterfall-item">
                   <div className="section-header">
                     <div className="service-icon">
-                      <img src="/image/service_card/icon/succession.png" alt="二代突圍" className="icon-image" />
+                      <img src="/Image/service_card/icon/succession.png" alt="二代突圍" className="icon-image" />
                     </div>
                     <h3 className="section-title">二代突圍</h3>
                     <div className="title-separator"></div>
@@ -364,7 +364,7 @@ const Home = () => {
                 <div className="content-section waterfall-item">
                   <div className="section-header">
                     <div className="service-icon">
-                      <img src="/image/service_card/icon/career.png" alt="職涯突圍" className="icon-image" />
+                      <img src="/Image/service_card/icon/career.png" alt="職涯突圍" className="icon-image" />
                     </div>
                     <h3 className="section-title">職涯突圍</h3>
                     <div className="title-separator"></div>
@@ -881,7 +881,7 @@ const Home = () => {
  
         /* Contact Section */
         .contact-section { position: relative; background: #ffffff; isolation: isolate; }
-        .contact-section { margin-top: -40px; background: url('/image/contact/bg.png') center/cover no-repeat; }
+        .contact-section { margin-top: -40px; background: url('/Image/contact/bg.png') center/cover no-repeat; }
         .contact-top-curve {
           position: absolute;
           top: 0;
