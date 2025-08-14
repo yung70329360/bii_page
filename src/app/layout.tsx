@@ -13,11 +13,6 @@ export const metadata: Metadata = {
     template: "%s | 突圍智創 BII",
   },
   description: "突圍智創：聚智而行，創領未來。專注創業、企業、二代與職涯的突破與成長。",
-  icons: {
-    icon: "/favicon.png?v=2",
-    shortcut: "/favicon.png?v=2",
-    apple: "/favicon.png?v=2",
-  },
   openGraph: {
     title: "突圍智創 BII",
     description: "聚智而行，創領未來 — 創業、企業、二代、職涯全方位支持。",
