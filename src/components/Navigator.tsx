@@ -7,9 +7,8 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 const mainNavLinks = [
-  { href: 'https://bii.tw', label: '首頁', isExternal: true },
+  { href: '/', label: '首頁' },
   { href: '/ai-spin-training', label: 'AI SPIN培訓' },
-  { href: '/knowledge-base', label: '知識庫' },
   {
     label: '電子書',
     subLinks: [{ href: '/ebooks/wisdom-strategy', label: '《智慧策略》' }],
@@ -43,9 +42,9 @@ export default function Navigator() {
         <div className="flex items-center justify-between h-16">
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center">
-              <a href="https://bii.tw" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition">
+              <Link href="/" className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition">
                 <Image src="/Logo/logo.png" alt="BiiPage Logo" width={120} height={40} />
-              </a>
+              </Link>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-1">
