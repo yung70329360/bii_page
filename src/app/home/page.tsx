@@ -36,26 +36,18 @@ const Home = () => {
   }, []);
   
   useEffect(() => {
-    // Simplified intro sequence with fallback
-    const t0 = setTimeout(() => setIntroStage('intro'), 100);
-    const t1 = setTimeout(() => setIntroStage('settle'), 800);
-    const t2 = setTimeout(() => setIntroStage('fly'), 1200);
-    const t3 = setTimeout(() => { setIntroStage('fade'); setHeroRevealed(true); }, 1800);
-    const t4 = setTimeout(() => setIntroStage('hidden'), 2400);
-    
-    // Fallback: if something goes wrong, show content after 3 seconds
-    const fallback = setTimeout(() => {
-      setIntroStage('hidden');
-      setHeroRevealed(true);
-    }, 3000);
-    
+    // Sequence: black -> intro(appear) -> settle(center normal) -> fly -> fade -> hidden
+    const t0 = setTimeout(() => setIntroStage('intro'), 60);   // 第一幀為純黑遮罩，稍後才出現 logo 動畫
+    const t1 = setTimeout(() => setIntroStage('settle'), 900 + 60); // 緩慢顯現放大結束
+    const t2 = setTimeout(() => setIntroStage('fly'), 1200 + 60);   // 飛向導覽列
+    const t3 = setTimeout(() => { setIntroStage('fade'); setHeroRevealed(true); }, 2100 + 60);  // 遮罩開始淡出
+    const t4 = setTimeout(() => setIntroStage('hidden'), 2800 + 60); // 遮罩移除
     return () => {
       clearTimeout(t0);
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
       clearTimeout(t4);
-      clearTimeout(fallback);
     };
   }, []);
 
@@ -200,24 +192,14 @@ const Home = () => {
             <div
               className={`intro-logo ${introStage === 'intro' ? 'appear' : ''} ${introStage === 'settle' ? 'center' : ''} ${introStage === 'fly' ? 'fly' : ''}`}
             >
-              <img 
-                src="/Logo/logo_white_noword.png" 
-                alt="logo" 
-                className="h-10 w-auto md:h-12"
-                onError={(e) => {
-                  console.error('Logo failed to load:', e);
-                  // Fallback: skip intro animation if logo fails
-                  setIntroStage('hidden');
-                  setHeroRevealed(true);
-                }}
-              />
+              <img src="/Logo/logo_white_noword.png" alt="logo" className="h-10 w-auto md:h-12" />
             </div>
           )}
         </div>
       )}
       {/* Mouse-following plane */}
       <div ref={planeRef} className="fixed pointer-events-none z-50 transition-transform duration-75 ease-out w-8 h-8">
-        <img src="/Image/mouse/plane.png" alt="plane" className="w-full h-full opacity-80 object-contain" />
+        <img src="/image/mouse/plane.png" alt="plane" className="w-full h-full opacity-80 object-contain" />
       </div>
       <Navigator />
       <main className="bg-gray-50 text-gray-900">
@@ -283,7 +265,7 @@ const Home = () => {
               <div className="relative h-[400px] lg:h-auto p-6 md:p-8 lg:p-10">
                 <div className="geo-shape">
                   <img
-                    src="/Image/about_us/v1.png"
+                    src="/image/about_us/v1.png"
                     alt="Team collaboration - hands stacked together"
                     className="w-full h-full object-cover"
                   />
@@ -319,7 +301,7 @@ const Home = () => {
                 <div className="content-section waterfall-item">
                   <div className="section-header">
                     <div className="service-icon">
-                      <img src="/Image/service_card/icon/startup.png" alt="創業突圍" className="icon-image" />
+                      <img src="/image/service_card/icon/startup.png" alt="創業突圍" className="icon-image" />
                     </div>
                     <h3 className="section-title">創業突圍</h3>
                     <div className="title-separator"></div>
@@ -340,7 +322,7 @@ const Home = () => {
                 <div className="content-section waterfall-item">
                   <div className="section-header">
                     <div className="service-icon">
-                      <img src="/Image/service_card/icon/enterprise.png" alt="企業突圍" className="icon-image" />
+                      <img src="/image/service_card/icon/enterprise.png" alt="企業突圍" className="icon-image" />
                     </div>
                     <h3 className="section-title">企業突圍</h3>
                     <div className="title-separator"></div>
@@ -361,7 +343,7 @@ const Home = () => {
                 <div className="content-section waterfall-item">
                   <div className="section-header">
                     <div className="service-icon">
-                      <img src="/Image/service_card/icon/succession.png" alt="二代突圍" className="icon-image" />
+                      <img src="/image/service_card/icon/succession.png" alt="二代突圍" className="icon-image" />
                     </div>
                     <h3 className="section-title">二代突圍</h3>
                     <div className="title-separator"></div>
@@ -382,7 +364,7 @@ const Home = () => {
                 <div className="content-section waterfall-item">
                   <div className="section-header">
                     <div className="service-icon">
-                      <img src="/Image/service_card/icon/career.png" alt="職涯突圍" className="icon-image" />
+                      <img src="/image/service_card/icon/career.png" alt="職涯突圍" className="icon-image" />
                     </div>
                     <h3 className="section-title">職涯突圍</h3>
                     <div className="title-separator"></div>
@@ -899,7 +881,7 @@ const Home = () => {
  
         /* Contact Section */
         .contact-section { position: relative; background: #ffffff; isolation: isolate; }
-        .contact-section { margin-top: -40px; background: url('/Image/contact/bg.png') center/cover no-repeat; }
+        .contact-section { margin-top: -40px; background: url('/image/contact/bg.png') center/cover no-repeat; }
         .contact-top-curve {
           position: absolute;
           top: 0;

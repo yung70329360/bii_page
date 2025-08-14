@@ -6,7 +6,12 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
-const mainNavLinks = [
+type SubLink = { href: string; label: string };
+type BasicLink = { href: string; label: string };
+type DropdownLink = { label: string; subLinks: SubLink[] };
+type NavLink = BasicLink | DropdownLink;
+
+const mainNavLinks: NavLink[] = [
   { href: '/', label: '首頁' },
   { href: '/ai-spin-training', label: 'AI SPIN培訓' },
   {
@@ -49,20 +54,7 @@ export default function Navigator() {
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-1">
                 {mainNavLinks.map((link) => {
-                  if (link.isExternal) {
-                    return (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors duration-300"
-                      >
-                        {link.label}
-                      </a>
-                    );
-                  }
-                  if (link.subLinks) {
+                  if ('subLinks' in link) {
                     return (
                       <div key={link.label} className="relative group">
                         <button
@@ -141,21 +133,7 @@ export default function Navigator() {
         <div className="sm:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {mainNavLinks.map((link) => {
-              if (link.isExternal) {
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-600 hover:text-white transition"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                );
-              }
-              if (link.subLinks) {
+              if ('subLinks' in link) {
                 return (
                   <div key={link.label}>
                     <button
