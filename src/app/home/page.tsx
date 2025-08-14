@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navigator from '@/components/Navigator';
 
 const Home = () => {
@@ -199,7 +200,7 @@ const Home = () => {
       )}
       {/* Mouse-following plane */}
       <div ref={planeRef} className="fixed pointer-events-none z-50 transition-transform duration-75 ease-out w-8 h-8">
-        <img src="/Image/mouse/plane.png" alt="plane" className="w-full h-full opacity-80 object-contain" />
+        <Image src="/Image/mouse/plane.png" alt="plane" width={32} height={32} priority className="w-full h-full opacity-80 object-contain" />
       </div>
       <Navigator />
       <main className="bg-gray-50 text-gray-900">
